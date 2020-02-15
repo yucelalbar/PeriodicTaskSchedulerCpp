@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <mutex>
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
@@ -43,10 +44,12 @@ class TimerScanner {
         }
 
         void addTask(const boost::function<void()>& task) {
+            std::lock_guard<std::mutex> lg(m_mtx);
             m_tasks.push_back(task);
         }
         void onTimerExec(const boost::system::error_code& ec)
         {
+            std::lock_guard<std::mutex> lg(m_mtx);
             if (ec != boost::asio::error::operation_aborted) {
                 start();
                 /*Execute tasks asynchronously*/
@@ -61,6 +64,7 @@ class TimerScanner {
 
     private:
         boost::asio::io_service& m_ioService;
+        std::mutex m_mtx;
         std::vector<boost::function<void()>> m_tasks;
         std::unique_ptr<Timer> m_timer;
         boost::function<void(const boost::system::error_code& ec)> m_cb;
