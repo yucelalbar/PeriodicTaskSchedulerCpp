@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}",
+                "C:/usr/include",
+                "C:/usr/include/c++/5",
+                "C:/usr/include/c++/5/backward",
+                "C:/usr/include/x86_64-linux-gnu",
+                "C:/usr/include/x86_64-linux-gnu/c++/5",
+                "C:/usr/lib/gcc/x86_64-linux-gnu/5/include",
+                "C:/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
+                "C:/usr/local/include"
+            ],
+            "defines": [
+                "__unix__",
+                "__x86_64__",
+                "__SIZE_TYPE__=long long unsigned int"
+            ],
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
