@@ -1,5 +1,7 @@
 # PeriodicTaskScheduler
 A Periodic Task Scheduler with C++ and Boost.Asio
-* A timer scanner is executed periodically with a given time in milliseconds granularity and tasks saved in a vector as member of TimerScanner are executed asynchronously.
 * Boost deadline_timer is used for periodic scheduler.
+* boost::asio::io_service is used to execute task asyncly.
+* A timer scanner is executed periodically with a given time in milliseconds granularity.
+* Tasks can be added with desired fire time to timer scanner queue.
  
